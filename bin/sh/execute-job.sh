@@ -85,17 +85,17 @@ done
 
 case $ALGORITHM in
 
-#     bfs)
-#       COMMAND="$rootdir/bin/exe/$ALGORITHM \
-#         --jobid $JOB_ID \
-#         --dataset $INPUT_PATH \
-#         --output $OUTPUT_PATH \
-#         --directed $DIRECTED \
-#         --source-vertex $SOURCE_VERTEX \
-#         --log-path $LOG_PATH \
-#         --threadnum $NUM_THREADS"
-#       ;;
-#
+     bfs)
+       COMMAND="$rootdir/bin/exe/$ALGORITHM \
+         --jobid $JOB_ID \
+         --dataset $INPUT_PATH \
+         --output $OUTPUT_PATH \
+         --directed $DIRECTED \
+         --source-vertex $SOURCE_VERTEX \
+         --log-path $LOG_PATH \
+         --threadnum $NUM_THREADS"
+       ;;
+
 #     wcc)
 #       COMMAND="$rootdir/bin/exe/$ALGORITHM \
 #         --jobid $JOB_ID \

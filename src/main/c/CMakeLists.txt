@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(GraphBLAS)
+project(NetworKit_Graphalytics)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -13,7 +13,7 @@ add_library(
 )
 
 link_libraries(benchmark_utils networkit)
-#add_executable(bfs src/algorithms/bfs.cpp)
+add_executable(bfs src/algorithms/bfs.cpp)
 #add_executable(cdlp src/algorithms/cdlp.cpp)
 add_executable(lcc src/algorithms/lcc.cpp)
 #add_executable(pr src/algorithms/pr.cpp)

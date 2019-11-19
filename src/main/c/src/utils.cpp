@@ -4,15 +4,6 @@
 
 #include "utils.h"
 
-//#define VERBOSE
-
-time_t GetCurrentMilliseconds() {
-    using namespace std::chrono;
-    return duration_cast<milliseconds>(
-        system_clock::now().time_since_epoch()
-    ).count();
-}
-
 /*
  * ARGUMENT PARSING FUNCTIONS
  */
@@ -80,4 +71,15 @@ ConverterParameters ParseConverterParameters(int argc, char **argv) {
     }
 
     return converter_parameters;
+}
+
+/*
+ * UTILITY METHODS
+ */
+
+time_t GetCurrentMilliseconds() {
+    using namespace std::chrono;
+    return duration_cast<milliseconds>(
+        system_clock::now().time_since_epoch()
+    ).count();
 }

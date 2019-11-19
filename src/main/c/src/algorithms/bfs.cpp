@@ -10,7 +10,8 @@
 
 #include <networkit/auxiliary/Parallelism.hpp>
 #include <networkit/io/EdgeListReader.hpp>
-#include <networkit/centrality/LocalClusteringCoefficient.hpp>
+#include <networkit/algebraic/CSRMatrix.hpp>
+#include <networkit/algebraic/algorithms/AlgebraicBFS.hpp>
 
 #include "utils.h"
 
@@ -20,8 +21,10 @@ using Graph_Mapping = std::map<std::string, NetworKit::node>;
 /*
  * Result serializer function
  */
-void WriteOutLCCResult(
-    const LCC_Result &result,
+template<typename Matrix>
+void WriteOutBFSResult(
+    const NetworKit::Graph &graph,
+    const NetworKit::AlgebraicBFS<Matrix> &bfs,
     const Graph_Mapping &mapping,
     const BenchmarkParameters &parameters
 ) {
@@ -31,13 +34,16 @@ void WriteOutLCCResult(
         std::cerr << "File " << parameters.output_file << " does not exists" << std::endl;
         exit(-1);
     }
-    file.precision(16);
-    file << std::scientific;
 
     auto reverseMapping = ReverseMap(mapping);
-    for (const auto &rank : result) {
-        std::string original_index = reverseMapping[rank.first];
-        file << original_index << " " << rank.second << std::endl;
+    for (const auto &node : graph.nodes()) {
+        std::string original_index = reverseMapping[node];
+        double distance = bfs.distance(node);
+        if (distance == std::numeric_limits<double>::infinity()) {
+            file << original_index << " " << "9223372036854775807" << std::endl;
+        } else {
+            file << original_index << " " << distance << std::endl;
+        }
     }
 }
 
@@ -56,16 +62,22 @@ int main(int argc, char **argv) {
         parameters.directed
     );
     NetworKit::Graph graph = reader.read(parameters.input_dir + "/edge.csv");
+    NetworKit::Graph unweightedGraph = graph.isWeighted() ? graph.toUnweighted() : graph;
+
+    NetworKit::node sourceNode = reader.getNodeMap()[
+        std::to_string(parameters.source_vertex)
+    ];
 
     // Execute the algorithm
     std::cout << "Processing starts at: " << GetCurrentMilliseconds() << std::endl;
-    NetworKit::LocalClusteringCoefficient lcc(graph, true);
-    lcc.run();
+    NetworKit::AlgebraicBFS<NetworKit::CSRMatrix> bfs(unweightedGraph, sourceNode);
+    bfs.run();
     std::cout << "Processing ends at: " << GetCurrentMilliseconds() << std::endl;
 
     // Write out the results
-    WriteOutLCCResult(
-        lcc.ranking(),
+    WriteOutBFSResult(
+        unweightedGraph,
+        bfs,
         reader.getNodeMap(),
         parameters
     );

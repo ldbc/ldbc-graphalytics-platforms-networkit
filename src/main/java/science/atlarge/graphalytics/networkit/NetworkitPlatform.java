@@ -28,6 +28,7 @@ import science.atlarge.graphalytics.execution.RunSpecification;
 import science.atlarge.graphalytics.execution.BenchmarkRunner;
 import science.atlarge.graphalytics.execution.BenchmarkRunSetup;
 import science.atlarge.graphalytics.execution.RuntimeSetup;
+import science.atlarge.graphalytics.networkit.algorithms.bfs.BreadthFirstSearchJob;
 import science.atlarge.graphalytics.report.result.BenchmarkMetrics;
 import science.atlarge.graphalytics.networkit.algorithms.lcc.LocalClusteringCoefficientJob;
 
@@ -118,9 +119,9 @@ public class NetworkitPlatform implements Platform {
 
 		NetworkitJob job;
 		switch (algorithm) {
-//			case BFS:
-//				job = new BreadthFirstSearchJob(runSpecification, platformConfig, inputPath, outputPath);
-//				break;
+			case BFS:
+				job = new BreadthFirstSearchJob(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);
+				break;
 //			case CDLP:
 //				job = new CommunityDetectionLPJob(runSpecification, platformConfig, inputPath, outputPath);
 //				break;

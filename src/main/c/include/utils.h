@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdexcept>
+#include <map>
 
 /*
  * ARGUMENT PARSING FUNCTIONS
@@ -27,3 +28,17 @@ typedef struct {
 } ConverterParameters;
 
 ConverterParameters ParseConverterParameters(int argc, char **argv);
+
+/*
+ * UTILITY METHODS
+ */
+
+time_t GetCurrentMilliseconds();
+
+template<typename K, typename V>
+static std::map<V, K> ReverseMap(const std::map<K, V>& m) {
+    std::map<V, K> r;
+    for (const auto& kv : m)
+        r[kv.second] = kv.first;
+    return r;
+}
