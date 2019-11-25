@@ -28,7 +28,6 @@ void WriteOutBFSResult(
     const Graph_Mapping &mapping,
     const BenchmarkParameters &parameters
 ) {
-
     std::ofstream file{parameters.output_file};
     if (!file.is_open()) {
         std::cerr << "File " << parameters.output_file << " does not exists" << std::endl;

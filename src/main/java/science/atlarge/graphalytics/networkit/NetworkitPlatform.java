@@ -29,6 +29,7 @@ import science.atlarge.graphalytics.execution.BenchmarkRunner;
 import science.atlarge.graphalytics.execution.BenchmarkRunSetup;
 import science.atlarge.graphalytics.execution.RuntimeSetup;
 import science.atlarge.graphalytics.networkit.algorithms.bfs.BreadthFirstSearchJob;
+import science.atlarge.graphalytics.networkit.algorithms.sssp.SingleSourceShortestPathsJob;
 import science.atlarge.graphalytics.report.result.BenchmarkMetrics;
 import science.atlarge.graphalytics.networkit.algorithms.lcc.LocalClusteringCoefficientJob;
 
@@ -137,9 +138,9 @@ public class NetworkitPlatform implements Platform {
 //			case WCC:
 //				job = new WeaklyConnectedComponentsJob(runSpecification, platformConfig, inputPath, outputPath);
 //				break;
-//			case SSSP:
-//				job = new SingleSourceShortestPathsJob(runSpecification, platformConfig, inputPath, outputPath);
-//				break;
+			case SSSP:
+				job = new SingleSourceShortestPathsJob(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);
+				break;
 			default:
 				throw new PlatformExecutionException("Failed to load algorithm implementation.");
 		}
