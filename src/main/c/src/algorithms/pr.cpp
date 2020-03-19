@@ -21,7 +21,6 @@ using Graph_Mapping = std::map<std::string, NetworKit::node>;
 /*
  * Result serializer function
  */
-template<typename Matrix>
 void WriteOutPRResult(
     const NetworKit::Graph &graph,
     NetworKit::PageRank &pr,

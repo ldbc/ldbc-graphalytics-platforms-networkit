@@ -21,7 +21,6 @@ using Graph_Mapping = std::map<std::string, NetworKit::node>;
 /*
  * Result serializer function
  */
-template<typename Matrix>
 void WriteOutWCCResult(
     const NetworKit::Graph &graph,
     NetworKit::WeaklyConnectedComponents &wcc,
@@ -74,7 +73,7 @@ int main(int argc, char **argv) {
     std::cout << "Processing ends at: " << GetCurrentMilliseconds() << std::endl;
 
     // Write out the results
-    WriteOutWccResult(
+    WriteOutWCCResult(
         unweightedGraph,
         wcc,
         reader.getNodeMap(),

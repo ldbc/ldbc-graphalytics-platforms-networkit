@@ -29,7 +29,9 @@ import science.atlarge.graphalytics.execution.BenchmarkRunner;
 import science.atlarge.graphalytics.execution.BenchmarkRunSetup;
 import science.atlarge.graphalytics.execution.RuntimeSetup;
 import science.atlarge.graphalytics.networkit.algorithms.bfs.BreadthFirstSearchJob;
+import science.atlarge.graphalytics.networkit.algorithms.pr.PageRankJob;
 import science.atlarge.graphalytics.networkit.algorithms.sssp.SingleSourceShortestPathsJob;
+import science.atlarge.graphalytics.networkit.algorithms.wcc.WeaklyConnectedComponentsJob;
 import science.atlarge.graphalytics.report.result.BenchmarkMetrics;
 import science.atlarge.graphalytics.networkit.algorithms.lcc.LocalClusteringCoefficientJob;
 
@@ -132,12 +134,12 @@ public class NetworkitPlatform implements Platform {
 				}
 				job = new LocalClusteringCoefficientJob(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);
 				break;
-//			case PR:
-//				job = new PageRankJob(runSpecification, platformConfig, inputPath, outputPath);
-//				break;
-//			case WCC:
-//				job = new WeaklyConnectedComponentsJob(runSpecification, platformConfig, inputPath, outputPath);
-//				break;
+			case PR:
+				job = new PageRankJob(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);
+				break;
+			case WCC:
+				job = new WeaklyConnectedComponentsJob(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);
+				break;
 			case SSSP:
 				job = new SingleSourceShortestPathsJob(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);
 				break;
