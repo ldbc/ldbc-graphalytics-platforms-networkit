@@ -38,7 +38,7 @@ void WriteOutPRResult(
         std::string original_index = reverseMapping[node];
         double distance = pr.score(node);
         if (distance == std::numeric_limits<double>::infinity()) {
-            file << original_index << " " << "9223372036854775807" << std::endl;
+            file << original_index << " " << "Infinity" << std::endl;
         } else {
             file << original_index << " " << distance << std::endl;
         }
