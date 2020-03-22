@@ -23,13 +23,3 @@ fi
 
 # Set library jar
 export LIBRARY_JAR=`ls lib/graphalytics-*default*.jar`
-
-
-# Construct the classpath
-PLATFORM_HOME=$(grep -E "^platform.NetworKit.home[	 ]*[:=]" $config/platform.properties | sed 's/platform.NetworKit.home[\t ]*[:=][\t ]*\([^\t ]*\).*/\1/g' | head -n 1)
-if [ -z $PLATFORM_HOME ]; then
-    echo "Error: NetworKit home directory not specified."
-    echo "Define variable platform.NetworKit.home in $config/platform.properties"
-    exit 1
-fi
-

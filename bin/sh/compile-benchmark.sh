@@ -26,7 +26,7 @@ if [ ! -f "$config/platform.properties" ]; then
 fi
 
 mkdir -p $rootdir/bin/exe
-(cd $rootdir/bin/exe && cmake -DCMAKE_BUILD_TYPE=Release ../../src/main/c -DPLATFORM_HOME=$PLATFORM_HOME && make all VERBOSE=1)
+(cd $rootdir/bin/exe && cmake -DCMAKE_BUILD_TYPE=Release ../../src/main/c && make all VERBOSE=1)
 
 if [ $? -ne 0 ]
 then
