@@ -15,6 +15,7 @@ mkdir build
 cd build/
 JOBS=$(nproc) make
 sudo make install
+sudo ldconfig
 ```
 
 In this repository, initialize the experiments:
