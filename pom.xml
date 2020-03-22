@@ -9,7 +9,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.name>NetworKit</platform.name>
+		<platform.name>networkit</platform.name>
 
 		<graphalytics.version>1.4.0-SNAPSHOT</graphalytics.version>
 		<commons.exec.version>1.3</commons.exec.version>
@@ -22,8 +22,8 @@
 	<name>Graphalytics Platform NetworKit</name>
 
 	<scm>
-		<developerConnection>scm:git:git@github.com:atlarge-research/graphalytics-platforms-NetworKit.git</developerConnection>
-		<url>https://github.com/atlarge-research/graphalytics-platforms-NetworKit</url>
+		<developerConnection>scm:git:git@github.com:atlarge-research/graphalytics-platforms-networkit.git</developerConnection>
+		<url>https://github.com/atlarge-research/graphalytics-platforms-networkit</url>
 	</scm>
 
 
@@ -144,7 +144,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
-					<finalName>graphalytics-${graphalytics.version}-NetworKit-${project.version}</finalName>
+					<finalName>graphalytics-${graphalytics.version}-networkit-${project.version}</finalName>
 					<tarLongFileMode>posix</tarLongFileMode>
 					<outputDirectory>${project.basedir}</outputDirectory>
 				</configuration>
@@ -159,7 +159,7 @@
 							<descriptors>
 								<descriptor>src/main/assembly/bin.xml</descriptor>
 							</descriptors>
-							<finalName>graphalytics-${graphalytics.version}-NetworKit-${project.version}</finalName>
+							<finalName>graphalytics-${graphalytics.version}-networkit-${project.version}</finalName>
 							<tarLongFileMode>posix</tarLongFileMode>
 							<outputDirectory>${project.basedir}</outputDirectory>
 						</configuration>
