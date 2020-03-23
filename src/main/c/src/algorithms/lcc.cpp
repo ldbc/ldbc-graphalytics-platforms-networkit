@@ -1,7 +1,3 @@
-/*
- * LCC algorithm implementation in GraphBLAS.
- */
-
 #include <iostream>
 #include <ctime>
 #include <fstream>
