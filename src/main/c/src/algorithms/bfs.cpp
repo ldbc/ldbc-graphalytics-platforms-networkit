@@ -7,7 +7,7 @@
 #include <networkit/auxiliary/Parallelism.hpp>
 #include <networkit/io/EdgeListReader.hpp>
 #include <networkit/algebraic/CSRMatrix.hpp>
-#include <networkit/algebraic/algorithms/AlgebraicBFS.hpp>
+#include <networkit/distance/BFS.hpp>
 
 #include "utils.h"
 
@@ -17,10 +17,9 @@ using Graph_Mapping = std::map<std::string, NetworKit::node>;
 /*
  * Result serializer function
  */
-template<typename Matrix>
 void WriteOutBFSResult(
     const NetworKit::Graph &graph,
-    const NetworKit::AlgebraicBFS<Matrix> &bfs,
+    const NetworKit::BFS &bfs,
     const Graph_Mapping &mapping,
     const BenchmarkParameters &parameters
 ) {
@@ -65,7 +64,7 @@ int main(int argc, char **argv) {
 
     // Execute the algorithm
     std::cout << "Processing starts at: " << GetCurrentMilliseconds() << std::endl;
-    NetworKit::AlgebraicBFS<NetworKit::CSRMatrix> bfs(unweightedGraph, sourceNode);
+    NetworKit::BFS bfs(unweightedGraph, sourceNode);
     bfs.run();
     std::cout << "Processing ends at: " << GetCurrentMilliseconds() << std::endl;
 
